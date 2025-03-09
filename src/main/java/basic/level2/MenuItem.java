@@ -15,8 +15,9 @@ public class MenuItem {
 		this.description = description;
 	}
 
+	// 메뉴를 출력할때 출력할 값을 만들기 위한 함수
 	@Override
 	public String toString() {
-		return String.format("%s | W %f | %s", name, price, description);
+		return String.format("%s | W %s | %s", name, price, description);
 	}
 }
