@@ -3,10 +3,11 @@ package basic.level3;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * @author    : kimjungmin
  * Created on : 2025. 3. 9.
+ * NBC 키오스크 과제 기본 - Lv3
+ * Kiosk 클래스를 추가하여 실행 흐름 관리하기
  */
 public class Main {
 	public static void main(String[] args) {
