@@ -1,4 +1,4 @@
-package basic.level4;
+package basic.level5;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,8 @@ import java.util.List;
 /**
  * @author    : kimjungmin
  * Created on : 2025. 3. 9.
- * NBC 키오스크 과제 기본 - Lv5
- *
- * 애초에 필드에 직접 접근하지 못하게 만들어서.. 자동으로 완성
+ * NBC 키오스크 과제 기본 - Lv4
+ * Menu 클래스 추가하기
  */
 public class Main {
 	public static void main(String[] args) {
