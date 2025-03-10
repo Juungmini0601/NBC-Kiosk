@@ -7,6 +7,7 @@ import static challenge.level1.util.ConsoleIOUtil.*;
 import java.util.List;
 
 import challenge.level1.cart.Cart;
+import challenge.level1.cart.CartConstant;
 import challenge.level1.util.ConsoleIOUtil;
 import challenge.level1.menu.Menu;
 import challenge.level1.menu.MenuItem;
@@ -93,7 +94,7 @@ public class Kiosk {
 				confirmAddCartMessage();
 				int addCartCommand = inputAddCartCommand();
 				// 카트에 상품을 넣는다.
-				if (addCartCommand == ADD_CART) {
+				if (addCartCommand == CartConstant.ADD_CART) {
 					cart.addMenuItem(selectedItem);
 					successAddCartMessage(selectedItem);
 				}
