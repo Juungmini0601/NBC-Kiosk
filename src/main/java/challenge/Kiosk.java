@@ -1,12 +1,16 @@
 package challenge;
 
+import static challenge.cart.CartConstant.*;
 import static challenge.menu.MainMenuConstant.*;
 import static challenge.menu.SelectMenuItemConstant.*;
 import static challenge.util.ConsoleIOUtil.*;
 
 import java.util.List;
 
+import challenge.cart.Cart;
 import challenge.menu.Menu;
+import challenge.menu.MenuItem;
+import challenge.order.OrderConstant;
 
 /**
  * @author    : kimjungmin
@@ -16,13 +20,17 @@ import challenge.menu.Menu;
  * 	1. 메인 메뉴 표시(메뉴에 있는 음식들 카테고리 출력)
  * 	2. 메뉴 아이템 선택(카테고리 메뉴에 해당하는 음식 선택 가능)
  *
+ * @see Cart 장바구니 표현용 클래스
+ *
  * @see challenge.util.ConsoleIOUtil 입출력 관련 유틸 클래스
  */
 public class Kiosk {
 	private final List<Menu> menus;
+	private final Cart cart;
 
 	public Kiosk(List<Menu> menus) {
 		this.menus = menus;
+		cart = new Cart();
 	}
 
 	/**
@@ -35,12 +43,24 @@ public class Kiosk {
 			try {
 				showMainMenus(menus);
 				int mainMenuCommand = inputMainMenuCommand(menus);
-				printKioskExitMessage();
 
 				// 종료가 선택되면 프로그램을 종료한다.
 				if (mainMenuCommand == MAIN_MENU_EXIT) {
 					printKioskExitMessage();
 					return;
+				}
+
+				// 주문이 선택되면 주문 프로세스로 이동한다.
+				if (mainMenuCommand == ORDER) {
+					order();
+					continue;
+				}
+
+				// 주문이 취소되면 장바구니를 비운다.
+				if (mainMenuCommand == ORDER_CANCEL) {
+					cart.clearCart();
+					printCancelOrderMessage();
+					continue;
 				}
 
 				Menu menu = menus.get(mainMenuCommand - 1);
@@ -58,17 +78,40 @@ public class Kiosk {
 		while (true) {
 			try {
 				showMenus(menu);
-				int selectedMenu = inputMenu(menu);
+				int selectedMenu = inputMenuItemCommand(menu);
 				// Menu Item 선택 종료가 눌리면 선택을 종료하고 다시 메인 메뉴 프로세스 선택 프로세스로 이동
 				if (selectedMenu == SELECT_MENU_EXIT) {
-					printSelectMenuExitMessage(menu.getCategory());
+					printSelectMenuItemExitMessage(menu.getCategory());
 					return;
 				}
 
-				printSelectedMenu(menu.get(selectedMenu - 1));
+				MenuItem selectedItem = menu.get(selectedMenu - 1);
+
+				printSelectedMenu(selectedItem);
+
+				// 카트 관련 기능 추가
+				confirmAddCartMessage();
+				int addCartCommand = inputAddCartCommand();
+				// 카트에 상품을 넣는다.
+				if (addCartCommand == ADD_CART) {
+					cart.addMenuItem(selectedItem);
+					successAddCartMessage(selectedItem);
+				}
 			} catch (Exception e) {
 				printErrorMessage(e);
 			}
+		}
+	}
+
+	// 주문 프로세스 처리용 코드
+	private void order() {
+		showCartStatus(cart);
+		int orderCommand = inputOrderCommand();
+
+		if (orderCommand == OrderConstant.ORDER) {
+			System.out.println("주문이 완료 되었습니다.");
+			double totalValue = cart.getTotalPrice();
+			System.out.printf("금액은 W %s 입니다.\n", totalValue);
 		}
 	}
 }
