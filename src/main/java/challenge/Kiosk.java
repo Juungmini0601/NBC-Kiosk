@@ -12,7 +12,11 @@ import challenge.menu.Menu;
  * @author    : kimjungmin
  * Created on : 2025. 3. 9.
  *
- * Kiosk 클래스: 프로그램의 메뉴 관리 및 사용자의 입력 처리
+ * @see Kiosk 키오스크 프로세스 관리
+ * 	1. 메인 메뉴 표시(메뉴에 있는 음식들 카테고리 출력)
+ * 	2. 메뉴 아이템 선택(카테고리 메뉴에 해당하는 음식 선택 가능)
+ *
+ * @see challenge.util.ConsoleIOUtil 입출력 관련 유틸 클래스
  */
 public class Kiosk {
 	private final List<Menu> menus;
