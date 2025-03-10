@@ -18,6 +18,14 @@ public class MenuItem {
 		this.description = description;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
 	// 메뉴를 출력할때 출력할 값을 만들기 위한 함수
 	@Override
 	public String toString() {
