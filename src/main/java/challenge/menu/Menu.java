@@ -1,4 +1,4 @@
-package challenge;
+package challenge.menu;
 
 import java.util.List;
 

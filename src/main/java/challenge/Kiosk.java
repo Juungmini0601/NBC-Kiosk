@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import challenge.menu.Menu;
+
 /**
  * @author    : kimjungmin
  * Created on : 2025. 3. 9.
