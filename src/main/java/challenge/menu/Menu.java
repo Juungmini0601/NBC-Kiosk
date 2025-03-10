@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * @author    : kimjungmin
  * Created on : 2025. 3. 9.
+ *
+ * TODO HashMap 구조가 더 효율적으로 보임
  */
 public class Menu {
 	private String category;
