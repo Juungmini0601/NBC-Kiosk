@@ -1,16 +1,16 @@
-package challenge;
+package challenge.level1;
 
-import static challenge.cart.CartConstant.*;
-import static challenge.menu.MainMenuConstant.*;
-import static challenge.menu.SelectMenuItemConstant.*;
-import static challenge.util.ConsoleIOUtil.*;
+import static challenge.level1.menu.MainMenuConstant.*;
+import static challenge.level1.menu.SelectMenuItemConstant.*;
+import static challenge.level1.util.ConsoleIOUtil.*;
 
 import java.util.List;
 
-import challenge.cart.Cart;
-import challenge.menu.Menu;
-import challenge.menu.MenuItem;
-import challenge.order.OrderConstant;
+import challenge.level1.cart.Cart;
+import challenge.level1.util.ConsoleIOUtil;
+import challenge.level1.menu.Menu;
+import challenge.level1.menu.MenuItem;
+import challenge.level1.order.OrderConstant;
 
 /**
  * @author    : kimjungmin
@@ -22,7 +22,7 @@ import challenge.order.OrderConstant;
  *
  * @see Cart 장바구니 표현용 클래스
  *
- * @see challenge.util.ConsoleIOUtil 입출력 관련 유틸 클래스
+ * @see ConsoleIOUtil 입출력 관련 유틸 클래스
  */
 public class Kiosk {
 	private final List<Menu> menus;
@@ -36,7 +36,7 @@ public class Kiosk {
 	/**
 	 * 키오스크 프로그램의 시작 메소드 초기 메뉴 출력
 	 * @see #selectMenuItem(Menu) 음식 선택 메뉴로 이동 할 시 수행되는 메소드
-	 * @see challenge.util.ConsoleIOUtil 입출력 관련 유틸 클래스(입력 예외는 Kiosk로 Throwing)
+	 * @see ConsoleIOUtil 입출력 관련 유틸 클래스(입력 예외는 Kiosk로 Throwing)
 	 */
 	public void start() {
 		while (true) {

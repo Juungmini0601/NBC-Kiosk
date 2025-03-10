@@ -1,4 +1,4 @@
-package challenge.order;
+package challenge.level1.order;
 
 /**
  * @author    : kimjungmin

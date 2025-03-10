@@ -1,14 +1,14 @@
-package challenge.util;
+package challenge.level1.util;
 
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import challenge.cart.Cart;
-import challenge.cart.CartConstant;
-import challenge.menu.Menu;
-import challenge.menu.MenuItem;
-import challenge.order.OrderConstant;
+import challenge.level1.cart.Cart;
+import challenge.level1.cart.CartConstant;
+import challenge.level1.menu.Menu;
+import challenge.level1.menu.MenuItem;
+import challenge.level1.order.OrderConstant;
 
 /**
  * @author    : kimjungmin

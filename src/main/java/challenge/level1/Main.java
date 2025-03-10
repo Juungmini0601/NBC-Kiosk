@@ -1,10 +1,10 @@
-package challenge;
+package challenge.level1;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import challenge.menu.Menu;
-import challenge.menu.MenuItem;
+import challenge.level1.menu.Menu;
+import challenge.level1.menu.MenuItem;
 
 /**
  * @author    : kimjungmin

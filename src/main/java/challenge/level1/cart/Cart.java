@@ -1,9 +1,9 @@
-package challenge.cart;
+package challenge.level1.cart;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import challenge.menu.MenuItem;
+import challenge.level1.menu.MenuItem;
 
 /**
  * @author    : kimjungmin
