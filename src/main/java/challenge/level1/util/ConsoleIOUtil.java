@@ -15,17 +15,20 @@ import challenge.level1.order.OrderConstant;
  * Created on : 2025. 3. 10.
  *
  * 콘솔 메뉴 입력 출력을 담당하는 유틸 클래스
+ *
+ * TODO Change To Enum Input
  */
 public final class ConsoleIOUtil {
 
 	private static final Scanner sc = new Scanner(System.in);
 
-	private ConsoleIOUtil() {}
+	private ConsoleIOUtil() {
+	}
 
 	public static void showMainMenus(List<Menu> menus) {
 		System.out.println("[ MAIN MENU ]");
 
-		for(int i = 0; i < menus.size(); i++) {
+		for (int i = 0; i < menus.size(); i++) {
 			System.out.println((i + 1) + ". " + menus.get(i).getCategory());
 		}
 
@@ -58,7 +61,7 @@ public final class ConsoleIOUtil {
 		String title = String.format("[ %s MENU ]", menu.getCategory());
 		System.out.println(title);
 
-		for(int i = 0; i < menu.size(); i++) {
+		for (int i = 0; i < menu.size(); i++) {
 			System.out.println((i + 1) + ". " + menu.get(i));
 		}
 
@@ -80,6 +83,7 @@ public final class ConsoleIOUtil {
 
 			return command;
 		} catch (InputMismatchException e) {
+			printErrorMessage(e);
 			// 버퍼 비우기용 코드
 			sc.nextLine();
 			throw e;
@@ -141,7 +145,7 @@ public final class ConsoleIOUtil {
 	}
 
 	public static void successAddCartMessage(MenuItem menuItem) {
-		System.out.println(menuItem.getName() +"이 장바구니에 추가 되었습니다.");
+		System.out.println(menuItem.getName() + "이 장바구니에 추가 되었습니다.");
 	}
 
 	// 카트에 있는 모든 아이템 출력

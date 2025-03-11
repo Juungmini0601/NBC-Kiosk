@@ -1,17 +1,16 @@
-package challenge.level1;
+package challenge.level2;
 
-import static challenge.level1.menu.MainMenuConstant.*;
-import static challenge.level1.menu.SelectMenuItemConstant.*;
-import static challenge.level1.util.ConsoleIOUtil.*;
+import static challenge.level2.menu.MainMenuConstant.*;
+import static challenge.level2.menu.SelectMenuItemConstant.*;
+import static challenge.level2.util.ConsoleIOUtil.*;
 
 import java.util.List;
 
-import challenge.level1.cart.Cart;
-import challenge.level1.cart.CartConstant;
-import challenge.level1.menu.Menu;
-import challenge.level1.menu.MenuItem;
-import challenge.level1.order.OrderConstant;
-import challenge.level1.util.ConsoleIOUtil;
+import challenge.level2.cart.Cart;
+import challenge.level2.cart.CartConstant;
+import challenge.level2.menu.Menu;
+import challenge.level2.menu.MenuItem;
+import challenge.level2.order.OrderConstant;
 
 /**
  * @author    : kimjungmin
@@ -23,7 +22,7 @@ import challenge.level1.util.ConsoleIOUtil;
  *
  * @see Cart 장바구니 표현용 클래스
  *
- * @see ConsoleIOUtil 입출력 관련 유틸 클래스
+ * @see challenge.level2.util.ConsoleIOUtil 입출력 관련 유틸 클래스
  */
 public class Kiosk {
 	private final List<Menu> menus;
@@ -37,11 +36,10 @@ public class Kiosk {
 	/**
 	 * 키오스크 프로그램의 시작 메소드 초기 메뉴 출력
 	 * @see #selectMenuItem(Menu) 음식 선택 메뉴로 이동 할 시 수행되는 메소드
-	 * @see ConsoleIOUtil 입출력 관련 유틸 클래스(입력 예외는 Kiosk로 Throwing)
+	 * @see challenge.level2.util.ConsoleIOUtil 입출력 관련 유틸 클래스(입력 예외는 Kiosk로 Throwing)
 	 */
 	public void start() {
 		while (true) {
-
 			showMainMenus(menus);
 			int mainMenuCommand = inputMainMenuCommand(menus);
 
@@ -66,7 +64,6 @@ public class Kiosk {
 
 			Menu menu = menus.get(mainMenuCommand - 1);
 			selectMenuItem(menu);
-
 		}
 	}
 
@@ -75,29 +72,25 @@ public class Kiosk {
 	 */
 	private void selectMenuItem(Menu menu) {
 		while (true) {
-			try {
-				showMenus(menu);
-				int selectedMenu = inputMenuItemCommand(menu);
-				// Menu Item 선택 종료가 눌리면 선택을 종료하고 다시 메인 메뉴 프로세스 선택 프로세스로 이동
-				if (selectedMenu == SELECT_MENU_EXIT) {
-					printSelectMenuItemExitMessage(menu.getCategory());
-					return;
-				}
+			showMenuItems(menu);
+			int selectedMenu = inputMenuItemCommand(menu);
+			// Menu Item 선택 종료가 눌리면 선택을 종료하고 다시 메인 메뉴 프로세스 선택 프로세스로 이동
+			if (selectedMenu == SELECT_MENU_EXIT) {
+				printSelectMenuItemExitMessage(menu.getCategory());
+				return;
+			}
 
-				MenuItem selectedItem = menu.get(selectedMenu - 1);
+			MenuItem selectedItem = menu.get(selectedMenu - 1);
 
-				printSelectedMenu(selectedItem);
+			printSelectedMenu(selectedItem);
 
-				// 카트 관련 기능 추가
-				confirmAddCartMessage();
-				int addCartCommand = inputAddCartCommand();
-				// 카트에 상품을 넣는다.
-				if (addCartCommand == CartConstant.ADD_CART) {
-					cart.addMenuItem(selectedItem);
-					successAddCartMessage(selectedItem);
-				}
-			} catch (Exception e) {
-				printErrorMessage(e);
+			// 카트 관련 기능 추가
+			confirmAddCartMessage();
+			int addCartCommand = inputAddCartCommand();
+			// 카트에 상품을 넣는다.
+			if (addCartCommand == CartConstant.ADD_CART) {
+				cart.addMenuItem(selectedItem);
+				successAddCartMessage(selectedItem);
 			}
 		}
 	}
