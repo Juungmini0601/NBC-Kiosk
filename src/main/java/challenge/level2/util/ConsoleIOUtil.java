@@ -15,6 +15,10 @@ import challenge.level2.order.OrderConstant;
  * Created on : 2025. 3. 10.
  *
  * 콘솔 메뉴 입력 출력을 담당하는 유틸 클래스
+ *
+ * 1주차 계산기 과제 피드백
+ * 1. 예외가 발생하는 부분과 예외를 처리하는 부분이 분리되어 있으면 읽기 어렵다
+ * 	-> 개선: 입출력시 발생하는 예외를 I/O 클래스에서 직접 처리
  */
 public final class ConsoleIOUtil {
 
@@ -135,21 +139,24 @@ public final class ConsoleIOUtil {
 
 	// 카트에 넣을지 말지를 입력 받는 함수
 	public static int inputAddCartCommand() {
-		System.out.print("숫자 입력: ");
-		try {
-			int command = sc.nextInt();
+		while (true) {
+			System.out.print("숫자 입력: ");
+			try {
+				int command = sc.nextInt();
 
-			// 이상한 정수 값 입력 되는 경우
-			if (command != CartConstant.ADD_CART && command != CartConstant.NOT_ADD_CART) {
-				throw new InputMismatchException("올바른 명령어를 입력 해주세요");
+				// 이상한 정수 값 입력 되는 경우
+				if (command != CartConstant.ADD_CART && command != CartConstant.NOT_ADD_CART) {
+					throw new InputMismatchException("올바른 명령어를 입력 해주세요");
+				}
+
+				return command;
+			} catch (InputMismatchException e) {
+				// 버퍼 비우기용 코드
+				sc.nextLine();
+				printErrorMessage(e);
 			}
-
-			return command;
-		} catch (InputMismatchException e) {
-			// 버퍼 비우기용 코드
-			sc.nextLine();
-			throw e;
 		}
+
 	}
 
 	public static void successAddCartMessage(MenuItem menuItem) {
@@ -166,21 +173,25 @@ public final class ConsoleIOUtil {
 	}
 
 	// 주문 관련 명령어 입력 받는 함수
-	public static int inputOrderCommand() {
-		System.out.print("숫자 입력: ");
-		try {
-			int command = sc.nextInt();
+	public static int inputOrderCommand(Cart cart) {
+		while (true) {
+			System.out.print("숫자 입력: ");
+			try {
+				int command = sc.nextInt();
 
-			// 이상한 정수 값 입력 되는 경우
-			if (command != OrderConstant.ORDER && command != OrderConstant.NOT_ORDER) {
-				throw new InputMismatchException("올바른 명령어를 입력 해주세요");
+				// 이상한 정수 값 입력 되는 경우
+				if (command != OrderConstant.ORDER && command != OrderConstant.NOT_ORDER) {
+					throw new InputMismatchException("올바른 명령어를 입력 해주세요");
+				}
+
+				return command;
+			} catch (InputMismatchException e) {
+				// 버퍼 비우기용 코드
+				sc.nextLine();
+				printErrorMessage(e);
+				// 제대로 입력할 때 까지 계속 입력
+				showCartStatus(cart);
 			}
-
-			return command;
-		} catch (InputMismatchException e) {
-			// 버퍼 비우기용 코드
-			sc.nextLine();
-			throw e;
 		}
 	}
 
@@ -188,5 +199,12 @@ public final class ConsoleIOUtil {
 	public static void printCancelOrderMessage() {
 		System.out.println("주문이 취소 되었습니다.");
 		System.out.println("장바구니를 비웁니다.\n");
+	}
+
+	// 주문 완료 메세지
+	public static void showOrderStatus(Cart cart) {
+		System.out.println("주문이 완료 되었습니다.");
+		double totalValue = cart.getTotalPrice();
+		System.out.printf("금액은 W %s 입니다.\n", totalValue);
 	}
 }

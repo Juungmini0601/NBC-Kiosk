@@ -98,12 +98,10 @@ public class Kiosk {
 	// 주문 프로세스 처리용 코드
 	private void order() {
 		showCartStatus(cart);
-		int orderCommand = inputOrderCommand();
+		int orderCommand = inputOrderCommand(cart);
 
 		if (orderCommand == OrderConstant.ORDER) {
-			System.out.println("주문이 완료 되었습니다.");
-			double totalValue = cart.getTotalPrice();
-			System.out.printf("금액은 W %s 입니다.\n", totalValue);
+			showOrderStatus(cart);
 		}
 	}
 }
