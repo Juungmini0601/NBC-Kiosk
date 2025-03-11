@@ -5,9 +5,6 @@ import java.util.List;
 /**
  * @author    : kimjungmin
  * Created on : 2025. 3. 9.
- *
- * TODO HashMap 구조가 더 효율적으로 보임
- * TODO Change To HashMap? Index와 잘 엮을 방법에 대한 고민이 필요함.
  */
 public class Menu {
 	private String category;
