@@ -1,9 +1,12 @@
 package challenge.level2.command;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import challenge.level2.domain.cart.Cart;
+import challenge.level2.domain.discount.DisCountType;
+import challenge.level2.domain.order.Order;
 import challenge.level2.util.ScannerHolder;
 
 /**
@@ -27,8 +30,13 @@ public class OrderCommand implements Command {
 		int orderCode = Reader.inputOrderCode();
 
 		if (orderCode == ORDER) {
-			// TODO 할인 정책 추가 예정
-			Printer.showOrderStatus(cart);
+			Printer.showDisCountInfo();
+			DisCountType disCountType = Reader.inputDiscountCode();
+
+			Order order = new Order(disCountType, cart);
+
+			Printer.showOrderStatus(order);
+			cart.clearCart();
 		}
 	}
 
@@ -41,10 +49,18 @@ public class OrderCommand implements Command {
 			System.out.println("1.주문	2.메뉴판");
 		}
 
-		public static void showOrderStatus(Cart cart) {
+		public static void showOrderStatus(Order order) {
 			System.out.println("주문이 완료 되었습니다.");
-			double totalValue = cart.getTotalPrice();
-			System.out.printf("금액은 W %s 입니다.\n", totalValue);
+			double finalPrice = order.getFinalPrice();
+			System.out.printf("금액은 W %s 입니다.\n", finalPrice);
+			System.out.println("장바구니를 비웁니다.");
+		}
+
+		public static void showDisCountInfo() {
+			System.out.println("할인 정보를 입력해주세요.");
+			Arrays.stream(DisCountType.values())
+				.forEach(type ->
+					System.out.printf("%d. %s: %d%%\n", type.getCode(), type.getDescription(), type.getDiscountRate()));
 		}
 
 		// 예외 메세지 출력
@@ -61,6 +77,20 @@ public class OrderCommand implements Command {
 	private static class Reader {
 
 		private static final Scanner sc = ScannerHolder.sc;
+
+		public static DisCountType inputDiscountCode() {
+			while (true) {
+				System.out.println("숫자 입력: ");
+				try {
+					int disCountCode = sc.nextInt();
+					return DisCountType.from(disCountCode);
+				} catch (InputMismatchException e) {
+					// 버퍼 비우기용 코드
+					sc.nextLine();
+					Printer.printErrorMessage(e);
+				}
+			}
+		}
 
 		public static int inputOrderCode() {
 			while (true) {
