@@ -5,6 +5,10 @@ import java.util.InputMismatchException;
 /**
  * @author    : kimjungmin
  * Created on : 2025. 3. 12.
+ *
+ * @see challenge.level2.domain.cart.Cart 장바구니
+ * @see challenge.level2.domain.order.Order Cart와 DisCountType을 통해 최종 금액을 계산
+ * 할인타입을 나타내는 코드
  */
 public enum DisCountType {
 	PERSON_OF_NATIONAL(1, 10, "국가 유공자"),

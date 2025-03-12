@@ -10,6 +10,7 @@ import challenge.level2.domain.menu.MenuItem;
  * @author    : kimjungmin
  * Created on : 2025. 3. 10.
  *
+ * @see MenuItem 을 원소로 가진다.
  * 카트에 들어있는 상품을 표현하기 위한 클래스
  */
 public class Cart {

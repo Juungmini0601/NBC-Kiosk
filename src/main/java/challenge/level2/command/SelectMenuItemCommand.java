@@ -12,6 +12,7 @@ import challenge.level2.util.ScannerHolder;
  * @author    : kimjungmin
  * Created on : 2025. 3. 11.
  *
+ * @see Command 구현체
  * 선택된 메뉴에 대한 단일 item 선택 프로세스
  */
 public class SelectMenuItemCommand implements Command {
@@ -31,19 +32,20 @@ public class SelectMenuItemCommand implements Command {
 		while (true) {
 			Printer.showMenuItems(menu);
 			int menuItemCode = Reader.inputMenuItemCode(menu);
-
+			// 나가기를 선택할 경우 진행하지 않는다.
 			if (menuItemCode == EXIT_CODE) {
 				Printer.printSelectMenuItemExitMessage(menu.getCategory());
 				return;
 			}
-
+			// 메뉴를 고른 경우 메뉴 정보를 보여준다.
 			MenuItem menuItem = menu.get(menuItemCode - 1);
 			Printer.printSelectedMenu(menuItem);
 
-			// 카트에 넣을지 확인 후 상품을 카트에 넣는다.
+			// 카트에 넣을지 확인한다.
 			Printer.confirmAddCartMessage();
 			int addCartCode = Reader.inputAddCartCode();
 
+			// 카트에 넣는다고 하면 카트에 넣어준다.
 			if (addCartCode == ADD_CART) {
 				cart.addMenuItem(menuItem);
 				Printer.successAddCartMessage(menuItem);

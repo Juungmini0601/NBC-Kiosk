@@ -6,6 +6,11 @@ import challenge.level2.domain.discount.DisCountType;
 /**
  * @author    : kimjungmin
  * Created on : 2025. 3. 12.
+ *
+ * @see DisCountType 할인 타입
+ * @see Cart 장바구니
+ *
+ * cart와 DiscountType을 이용하여 최종 주문 정보를 계산하기 위한 클래스
  */
 public class Order {
 	private final DisCountType disCountType;

@@ -3,8 +3,9 @@ package challenge.level2.command;
 /**
  * @author    : kimjungmin
  * Created on : 2025. 3. 11.
+ * @see Command 구현체
  *
- * Main Menu Exit는 무조건 0번에 매핑된다.
+ * 프로그램 종료 프로세스
  */
 public class MainMenuExitCommand implements Command {
 

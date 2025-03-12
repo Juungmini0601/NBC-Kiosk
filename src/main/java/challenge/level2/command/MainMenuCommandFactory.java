@@ -10,6 +10,9 @@ import challenge.level2.domain.menu.Menu;
 /**
  * @author    : kimjungmin
  * Created on : 2025. 3. 11.
+ *
+ * @see Command
+ * Command의 구현체를 Kiosk에 제공하기 위한 클래스
  */
 public class MainMenuCommandFactory {
 	private final Map<Integer, Command> mainManuCommand;

@@ -13,6 +13,8 @@ import challenge.level2.util.ScannerHolder;
  * @author    : kimjungmin
  * Created on : 2025. 3. 11.
  *
+ * @see Command 구현체
+ * 주문 프로세스를 처리하기 위한 코드
  */
 public class OrderCommand implements Command {
 
@@ -26,22 +28,23 @@ public class OrderCommand implements Command {
 
 	@Override
 	public void execute() {
-		Printer.showCartStatus(cart);
+		// 장바구니 상태를 보여주면서 주문 할 건지 확인
+		Printer.confirmOrderWithCartInfo(cart);
 		int orderCode = Reader.inputOrderCode();
-
+		// 주문하겠다고 하면 주문
 		if (orderCode == ORDER) {
 			Printer.showDisCountInfo();
 			DisCountType disCountType = Reader.inputDiscountCode();
-
+			// 할인 정보와 장바구니가 담겨있는 Order 객체 생성
 			Order order = new Order(disCountType, cart);
-
+			// 주문 정보를 보여주고 장바구니 리셋
 			Printer.showOrderStatus(order);
 			cart.clearCart();
 		}
 	}
 
 	private static class Printer {
-		public static void showCartStatus(Cart cart) {
+		public static void confirmOrderWithCartInfo(Cart cart) {
 			System.out.println("아래와 같이 주문 하겠습니까?\n");
 			System.out.println(cart);
 			System.out.println();

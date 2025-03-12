@@ -17,11 +17,10 @@ import challenge.level2.util.ScannerHolder;
  * Created on : 2025. 3. 9.
  *
  * @see Kiosk 키오스크 프로세스 관리
- * 	1. 메인 메뉴 표시(메뉴에 있는 음식들 카테고리 출력)
- * 	2. 메뉴 아이템 선택(카테고리 메뉴에 해당하는 음식 선택 가능)
- *
  * @see Cart 장바구니 표현용 클래스
  * @see Menu MenuItem을 담고 있는 클래스
+ * @see challenge.level2.domain.discount.DisCountType 할인정보를 담고 있는 클래스
+ * @see challenge.level2.domain.order.Order DiscountType, Cart를 포함한 최종 주문 정보를 담고 있는 클래스
  * @see MainMenuCommandFactory Command(프로그램 종료, 메뉴 선택, 주문 등등)를 담고 있는 클래스
  * @see Command 각 명령을 추상화한 인터페이스
  */
