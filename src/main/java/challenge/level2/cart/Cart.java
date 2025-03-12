@@ -2,6 +2,7 @@ package challenge.level2.cart;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import challenge.level2.menu.MenuItem;
 
@@ -42,27 +43,19 @@ public class Cart {
 	 *
 	 * [ Total ]
 	 * W 8.9
-	 * TODO Change To Stream
 	 */
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("[ Orders ]");
-		sb.append("\n");
+		String orderString = cart.entrySet().stream()
+			.map(entry -> String.format("%s\t수량: %d", entry.getKey(), entry.getValue()))
+			.collect(Collectors.joining("\n")); // Stream의 요소를 \n 구분자를 넣어가며 합쳐준다.
 
-		for (MenuItem menuItem : cart.keySet()) {
-			sb.append(menuItem)
-				.append("	수량: ")
-				.append(cart.get(menuItem))
-				.append("\n");
-		}
-
-		sb.append("\n")
-			.append("[ Total ]")
-			.append("\n")
-			.append("W ")
-			.append(getTotalPrice())
-			.append("\n");
-
-		return sb.toString();
+		return String.format("""
+			[ Orders ]
+			%s
+			
+			[ Total ]
+			W %.2f
+			""", orderString, getTotalPrice());
 	}
 }
