@@ -1,4 +1,4 @@
-package challenge.level2.menu;
+package challenge.level2.domain.menu;
 
 import java.util.List;
 

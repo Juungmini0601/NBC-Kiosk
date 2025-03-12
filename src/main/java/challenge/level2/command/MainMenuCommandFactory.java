@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import challenge.level2.cart.Cart;
-import challenge.level2.menu.Menu;
+import challenge.level2.domain.cart.Cart;
+import challenge.level2.domain.menu.Menu;
 
 /**
  * @author    : kimjungmin

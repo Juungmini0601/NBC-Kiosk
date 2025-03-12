@@ -1,10 +1,10 @@
-package challenge.level2.cart;
+package challenge.level2.domain.cart;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import challenge.level2.menu.MenuItem;
+import challenge.level2.domain.menu.MenuItem;
 
 /**
  * @author    : kimjungmin

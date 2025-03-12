@@ -1,6 +1,6 @@
 package challenge.level2.command;
 
-import challenge.level2.cart.Cart;
+import challenge.level2.domain.cart.Cart;
 
 /**
  * @author    : kimjungmin

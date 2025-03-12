@@ -3,9 +3,9 @@ package challenge.level2.command;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import challenge.level2.cart.Cart;
-import challenge.level2.menu.Menu;
-import challenge.level2.menu.MenuItem;
+import challenge.level2.domain.cart.Cart;
+import challenge.level2.domain.menu.Menu;
+import challenge.level2.domain.menu.MenuItem;
 import challenge.level2.util.ScannerHolder;
 
 /**
