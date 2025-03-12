@@ -22,16 +22,11 @@ public class Cart {
 		cart.put(item, cart.getOrDefault(item, 0) + 1);
 	}
 
-	// TODO Change To Stream
 	// 카트에 있는 전체 합계 계산
 	public double getTotalPrice() {
-		double sum = 0;
-
-		for (MenuItem menuItem : cart.keySet()) {
-			sum += menuItem.getPrice() * cart.get(menuItem);
-		}
-
-		return sum;
+		return cart.entrySet().stream()
+			.mapToDouble(entry -> entry.getKey().getPrice() * entry.getValue())
+			.sum();
 	}
 
 	// 장바구니 비우기
