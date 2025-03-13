@@ -1,6 +1,5 @@
 package challenge.level2;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -9,7 +8,6 @@ import challenge.level2.command.Command;
 import challenge.level2.command.MainMenuCommandFactory;
 import challenge.level2.domain.cart.Cart;
 import challenge.level2.domain.menu.Menu;
-import challenge.level2.domain.menu.MenuItem;
 import challenge.level2.util.ScannerHolder;
 
 /**
@@ -29,33 +27,8 @@ public class Kiosk {
 	private final Cart cart;
 	private final MainMenuCommandFactory mainMenuCommandFactory;
 
-	public Kiosk() {
-		List<MenuItem> hamburgers = new ArrayList<>();
-		hamburgers.add(new MenuItem("ShackBurger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
-		hamburgers.add(new MenuItem("SmokeShack", 8.9, "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거"));
-		hamburgers.add(new MenuItem("Cheeseburger", 6.9, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거"));
-		hamburgers.add(new MenuItem("Hamburger", 5.4, "비프패티를 기반으로 야채가 들어간 기본버거"));
-
-		Menu hamburgerMenu = new Menu("Burger", hamburgers);
-
-		// 음료수 메뉴 생성
-		List<MenuItem> drinks = new ArrayList<>();
-		drinks.add(new MenuItem("Coke", 2.5, "시원한 탄산 콜라"));
-		drinks.add(new MenuItem("Diet Coke", 2.5, "칼로리를 낮춘 다이어트 콜라"));
-		drinks.add(new MenuItem("Sprite", 2.5, "깔끔한 탄산 사이다"));
-		drinks.add(new MenuItem("Lemonade", 3.0, "상큼한 레모네이드"));
-
-		Menu beverageMenu = new Menu("Drink", drinks);
-
-		// 디저트(감자튀김) 메뉴 생성
-		List<MenuItem> desserts = new ArrayList<>();
-		desserts.add(new MenuItem("Fries", 3.5, "바삭바삭하고 고소한 감자튀김"));
-		desserts.add(new MenuItem("Cheese Fries", 4.5, "녹아내린 치즈가 듬뿍 얹어진 감자튀김"));
-		desserts.add(new MenuItem("Bacon Cheese Fries", 5.5, "베이컨과 치즈가 듬뿍 토핑된 감자튀김"));
-		desserts.add(new MenuItem("Loaded Fries", 6.0, "베이컨, 치즈, 할라피뇨가 토핑된 스페셜 감자튀김"));
-		Menu dessertMenu = new Menu("Dessert", desserts);
-
-		this.menus = List.of(hamburgerMenu, beverageMenu, dessertMenu);
+	public Kiosk(List<Menu> menus) {
+		this.menus = menus;
 		cart = new Cart();
 		mainMenuCommandFactory = new MainMenuCommandFactory(menus, cart);
 	}
