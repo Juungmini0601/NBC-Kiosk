@@ -105,7 +105,7 @@ public class SelectMenuItemCommand implements Command {
 				try {
 					int code = sc.nextInt();
 
-					// 이상한 정수 값 입력 되는 경우
+					// 이상한 정수 값 입력 되는 경우 TODO Input 받는 코드에서 Menu 관련 로직을 알 필요가 있는 건지?
 					if (code < 0 || code > menu.size()) {
 						throw new InputMismatchException("올바른 명령어를 입력 해주세요");
 					}

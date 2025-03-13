@@ -95,13 +95,14 @@ public class OrderCommand implements Command {
 			}
 		}
 
+		// TODO 가능한 옵션만 넣어주고 전역으로 입력 받을 수 있는 전역 클래스를 만들 수는 있을 거 같다
 		public static int inputOrderCode() {
 			while (true) {
 				System.out.print("숫자 입력: ");
 				try {
 					int code = sc.nextInt();
 
-					// 이상한 정수 값 입력 되는 경우
+					// 이상한 정수 값 입력 되는 경우 TODO Input 받는 코드에서 ORDER, NOT_ORDER를 알 필요가 있는건지?
 					if (code != ORDER && code != NOT_ORDER) {
 						throw new InputMismatchException("올바른 명령어를 입력 해주세요");
 					}
