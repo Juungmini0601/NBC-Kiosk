@@ -111,6 +111,8 @@ public class Kiosk {
 			System.out.println("주문이 완료 되었습니다.");
 			double totalValue = cart.getTotalPrice();
 			System.out.printf("금액은 W %s 입니다.\n", totalValue);
+			
+			cart.clearCart();
 		}
 	}
 }
